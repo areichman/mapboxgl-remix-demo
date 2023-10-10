@@ -1,0 +1,17 @@
+{
+  "name": "map-demo",
+  "description": "Demo map applications",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/areichman/map-demo.git"
+  },
+  "author": "Aaron Reichman",
+  "homepage": "https://github.com/areichman/map-demo#readme",
+  "workspaces": [
+    "packages/mapboxgl-remix"
+  ]
+}
