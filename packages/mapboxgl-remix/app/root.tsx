@@ -8,6 +8,13 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import { Layout, Typography } from "antd";
+
+import AppTheme from "~/components/AppTheme/AppTheme";
+import AppHeader from "~/components/AppHeader/AppHeader";
+
+const { Header, Content } = Layout;
+const { Text } = Typography;
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
@@ -22,8 +29,16 @@ export default function App() {
         <Meta />
         <Links />
       </head>
+
       <body>
-        <Outlet />
+        <AppTheme>
+          <Layout>
+            <AppHeader />
+            <Content style={{ minHeight: "100vh" }}>
+              <Outlet />
+            </Content>
+          </Layout>
+        </AppTheme>
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
