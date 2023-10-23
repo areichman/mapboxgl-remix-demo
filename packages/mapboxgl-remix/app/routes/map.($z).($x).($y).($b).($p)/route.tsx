@@ -23,6 +23,8 @@ export default function Map() {
       pitch: Number(params.p) || 0,
     });
 
+    map.addControl(new mapboxgl.NavigationControl());
+
     map.on("moveend", () => {
       const zoom = map.getZoom();
       const { lng, lat } = map.getCenter();
