@@ -43,5 +43,7 @@ export default function Map() {
     });
   }, []);
 
+  // TODO: useEffect to update/reset map when params are changed/cleared
+
   return <Content id="map"></Content>;
 }
