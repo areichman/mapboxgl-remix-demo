@@ -1,13 +1,10 @@
 import { styled } from "styled-components";
+import { Layout } from "antd";
 
-const Container = styled.div`
+const { Content } = Layout;
+
+const StyledContent = styled(Content)`
   padding: 15px;
 `;
 
-interface Props {
-  children: React.ReactNode;
-}
-
-export default function PageContainer({ children }: Props) {
-  return <Container>{children}</Container>;
-}
+export default StyledContent;

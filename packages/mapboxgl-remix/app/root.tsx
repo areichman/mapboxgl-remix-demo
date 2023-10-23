@@ -7,7 +7,9 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
+import { json } from "@remix-run/node";
 import { Layout, Typography } from "antd";
 
 import AppTheme from "~/components/AppTheme/AppTheme";
@@ -20,7 +22,23 @@ export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
 ];
 
+declare global {
+  interface Window {
+    ENV: {
+      MAPBOX_ACCESS_TOKEN: string;
+    };
+  }
+}
+
+export async function loader() {
+  return json({
+    MAPBOX_ACCESS_TOKEN: process.env.MAPBOX_ACCESS_TOKEN,
+  });
+}
+
 export default function App() {
+  const data = useLoaderData<typeof loader>();
+
   return (
     <html lang="en">
       <head>
@@ -32,13 +50,18 @@ export default function App() {
 
       <body>
         <AppTheme>
-          <Layout>
+          <Layout style={{ minHeight: "100vh" }}>
             <AppHeader />
-            <Content style={{ minHeight: "100vh" }}>
-              <Outlet />
-            </Content>
+            <Outlet />
           </Layout>
         </AppTheme>
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(data)}`,
+          }}
+        />
+
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
