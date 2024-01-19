@@ -10,13 +10,10 @@ import {
   useLoaderData,
 } from "@remix-run/react";
 import { json } from "@remix-run/node";
-import { Layout, Typography } from "antd";
+import { Layout } from "antd";
 
 import AppTheme from "~/components/AppTheme/AppTheme";
 import AppHeader from "~/components/AppHeader/AppHeader";
-
-const { Header, Content } = Layout;
-const { Text } = Typography;
 
 export const links: LinksFunction = () => [
   ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),

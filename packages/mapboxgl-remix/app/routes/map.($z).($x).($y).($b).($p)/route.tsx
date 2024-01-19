@@ -41,7 +41,7 @@ export default function Map() {
 
       navigate(`/map/${path}`, { replace: true });
     });
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // TODO: useEffect to update/reset map when params are changed/cleared
 
