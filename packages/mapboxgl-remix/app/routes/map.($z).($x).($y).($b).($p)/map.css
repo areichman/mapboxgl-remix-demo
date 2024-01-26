@@ -1,0 +1,8 @@
+#map {
+  width: 100%;
+  height: calc(100vh - 64px);
+}
+
+#map .mapboxgl-ctrl-bottom-left {
+  left: 300px;
+}

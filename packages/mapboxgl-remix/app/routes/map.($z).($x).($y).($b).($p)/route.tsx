@@ -1,8 +1,10 @@
-import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "@remix-run/react";
 import { Layout } from "antd";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { useEffect, useRef, useState } from "react";
+
+import "./map.css";
 
 import { LayerControl } from "./LayerControl";
 
@@ -52,10 +54,7 @@ export default function Map() {
 
   return (
     <Content>
-      <div
-        id="map"
-        style={{ width: "100%", height: "calc(100vh - 64px" }}
-      ></div>
+      <div id="map"></div>
       {mapReady && map.current && <LayerControl map={map.current} />}
     </Content>
   );

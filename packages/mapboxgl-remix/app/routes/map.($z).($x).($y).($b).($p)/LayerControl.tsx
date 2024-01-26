@@ -1,12 +1,15 @@
-import { styled } from "styled-components";
+import { Checkbox, Divider, Space } from "antd";
 import type { Map } from "mapbox-gl";
+import { useState } from "react";
+import { styled } from "styled-components";
 
 import { AlertsLayer } from "./AlertsLayer";
-import { Divider } from "antd";
+import { ScaleControl } from "./ScaleControl";
 
 const Title = styled.p`
   font-size: 1.2em;
   font-variant: small-caps;
+  color: #888;
 `;
 
 const Container = styled.div`
@@ -21,6 +24,10 @@ const Container = styled.div`
   color: white;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
+
+  & label {
+    color: white;
+  }
 `;
 
 interface Props {
@@ -28,17 +35,49 @@ interface Props {
 }
 
 export function LayerControl({ map }: Props) {
+  const [layerState, setLayerState] = useState({
+    flood: true,
+    scale: true,
+  });
+
+  const toggleLayer = (name: string) => {
+    const newLayerState = {
+      ...layerState,
+      [name]: !layerState[name as keyof typeof layerState],
+    };
+    setLayerState(newLayerState);
+  };
+
   return (
     <Container>
       <Title>Layers</Title>
-      <p>Flood Warning</p>
+      <Space>
+        <Checkbox
+          checked={layerState.flood}
+          onChange={() => {
+            toggleLayer("flood");
+          }}
+        >
+          Flood Warning
+        </Checkbox>
+      </Space>
 
       <Divider />
 
       <Title>Controls</Title>
-      <p>Scale</p>
+      <Space>
+        <Checkbox
+          checked={layerState.scale}
+          onChange={() => {
+            toggleLayer("scale");
+          }}
+        >
+          Scale
+        </Checkbox>
+      </Space>
 
-      <AlertsLayer map={map} event="Flood Warning" />
+      {layerState.flood && <AlertsLayer map={map} event="Flood Warning" />}
+      {layerState.scale && <ScaleControl map={map} />}
     </Container>
   );
 }
