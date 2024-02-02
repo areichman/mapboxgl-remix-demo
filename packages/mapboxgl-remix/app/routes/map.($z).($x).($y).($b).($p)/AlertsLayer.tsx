@@ -5,8 +5,9 @@
 // we can modify the limit variable to refresh the layer.
 // https://www.weather.gov/documentation/services-web-api#/default/alerts_active
 
-import { useEffect, useState } from "react";
 import type { Map } from "mapbox-gl";
+import mapboxgl from "mapbox-gl";
+import { useEffect, useState } from "react";
 
 interface Props {
   map: Map;
@@ -33,11 +34,24 @@ export function AlertsLayer({ map, event }: Props) {
       },
     });
 
+    map.on("click", "nws-alerts", ({ lngLat, features }) => {
+      const { properties } = features![0];
+      new mapboxgl.Popup()
+        .setLngLat(lngLat)
+        .setHTML(
+          `
+          <strong>${properties!.headline}</strong>
+          <p>${properties!.description}</p>
+          `
+        )
+        .addTo(map);
+    });
+
     return () => {
       map.removeLayer("nws-alerts");
       map.removeSource("nws-alerts");
     };
-  }, [map, event, limit]);
+  }, [limit]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return null;
 }
