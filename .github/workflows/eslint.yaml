@@ -15,5 +15,8 @@ jobs:
         with:
           node-version: 20
 
+      - name: Install ESLint
+        run: npm init @eslint/config@latest -- --config eslint-config-standard
+
       - name: Run ESLint
-        run: npx eslint
+        run: npx eslint .
