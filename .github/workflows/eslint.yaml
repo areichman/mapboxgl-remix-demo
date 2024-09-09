@@ -16,4 +16,4 @@ jobs:
           node-version: 20
 
       - name: Run ESLint
-        run: eslint
+        run: npx eslint
