@@ -26,5 +26,5 @@ jobs:
       - name: ESLint
         run: npm run lint --workspace=mapboxgl-remix
 
-      - naem: Build
+      - name: Build
         run: npm run build --workspace=mapboxgl-remix
