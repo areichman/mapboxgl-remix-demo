@@ -1,11 +1,7 @@
-name: CI for mapboxgl-remix
+name: CI
 
 on:
   push:
-    paths:
-      - packages/mapboxgl-remix
-      - package.json
-      - .github/workflows/mapboxgl-remix.yaml
 
 jobs:
   ci:
@@ -24,7 +20,7 @@ jobs:
         run: npm ci
 
       - name: ESLint
-        run: npm run lint --workspace=mapboxgl-remix
+        run: npm run lint
 
       - name: Build
-        run: npm run build --workspace=mapboxgl-remix
+        run: npm run build

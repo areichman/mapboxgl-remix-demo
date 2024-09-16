@@ -1,17 +1,47 @@
 {
-  "name": "map-demo",
-  "description": "Demo map applications",
+  "name": "mapboxgl-remix-demo",
+  "private": true,
+  "sideEffects": false,
+  "description": "MapboxGL + Remix demo",
   "version": "1.0.0",
-  "scripts": {
-    "test": "npm test"
-  },
+  "type": "module",
+  "author": "Aaron Reichman",
+  "homepage": "https://github.com/areichman/map-demo#readme",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/areichman/map-demo.git"
   },
-  "author": "Aaron Reichman",
-  "homepage": "https://github.com/areichman/map-demo#readme",
-  "workspaces": [
-    "packages/mapboxgl-remix"
-  ]
+  "scripts": {
+    "build": "remix build",
+    "dev": "remix dev --manual",
+    "start": "remix-serve ./build/index.js",
+    "typecheck": "tsc",
+    "lint": "eslint .",
+    "test": "npm test"
+  },
+  "dependencies": {
+    "@remix-run/css-bundle": "^2.10.0",
+    "@remix-run/node": "^2.10.0",
+    "@remix-run/react": "^2.10.0",
+    "@remix-run/serve": "^2.10.0",
+    "antd": "^5.10.0",
+    "isbot": "^3.6.8",
+    "mapbox-gl": "^2.15.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.0.8"
+  },
+  "devDependencies": {
+    "@remix-run/dev": "^2.10.0",
+    "@remix-run/eslint-config": "^2.10.0",
+    "@types/mapbox-gl": "^2.7.15",
+    "@types/react": "^18.2.20",
+    "@types/react-dom": "^18.2.7",
+    "@types/styled-components": "^5.1.28",
+    "eslint": "^8.38.0",
+    "typescript": "^5.1.6"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }
