@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - packages/mapboxgl-remix
+      - package.json
+      - .github/workflows/mapboxgl-remix.yaml
 
 jobs:
   ci:
