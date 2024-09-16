@@ -51,7 +51,7 @@ export function AlertsLayer({ map, event }: Props) {
       map.removeLayer("nws-alerts");
       map.removeSource("nws-alerts");
     };
-  }, [limit]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [limit]);
 
   return null;
 }

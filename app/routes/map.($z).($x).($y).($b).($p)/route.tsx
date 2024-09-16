@@ -50,7 +50,7 @@ export default function Map() {
     map.current.on("style.load", () => {
       setMapReady(true);
     });
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Content>
