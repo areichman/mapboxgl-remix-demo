@@ -6,10 +6,10 @@
   "version": "1.0.0",
   "type": "module",
   "author": "Aaron Reichman",
-  "homepage": "https://github.com/areichman/map-demo#readme",
+  "homepage": "https://github.com/areichman/mapboxgl-remix-demo#readme",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/areichman/map-demo.git"
+    "url": "git+ssh://git@github.com/areichman/mapboxgl-remix-demo.git"
   },
   "scripts": {
     "build": "remix build",
